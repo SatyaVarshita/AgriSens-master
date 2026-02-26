@@ -6,9 +6,6 @@ import os   # add this
 # 👇 ADD DEBUG CODE HERE
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-st.write("Current directory:", BASE_DIR)
-st.write("Files available in this folder:", os.listdir(BASE_DIR))
-
 def model_prediction(test_image):
     model = tf.keras.models.load_model("trained_plant_disease_model.keras")
     image = tf.keras.preprocessing.image.load_img(test_image,target_size=(128,128))
