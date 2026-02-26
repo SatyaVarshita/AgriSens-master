@@ -1,6 +1,6 @@
 streamlit
 seaborn
-tensorflow==2.20.0
+tensorflow
 keras
 numpy
 pickle-mixin
