@@ -1,5 +1,4 @@
-
-       import streamlit as st
+import streamlit as st
 import tensorflow as tf
 import numpy as np
 def model_prediction(test_image):
