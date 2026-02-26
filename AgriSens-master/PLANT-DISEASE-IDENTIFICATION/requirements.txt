@@ -7,4 +7,5 @@ pickle-mixin
 matplotlib
 pandas
 scikit-learn
+pillow
 opencv-python-headless
