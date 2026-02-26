@@ -8,7 +8,7 @@ from PIL import Image
 def load_model():
     try:
         model = tf.keras.models.load_model(
-             "PLANT-DISEASE-IDENTIFICATION/trained_plant_disease_model.keras",
+             "trained_plant_disease_model.keras",
             compile=False
         )
         return model
