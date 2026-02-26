@@ -1,7 +1,9 @@
 streamlit
+seaborn
 tensorflow==2.20.0
+keras
 numpy
-pillow
+pickle-mixin
 matplotlib
 pandas
 scikit-learn
