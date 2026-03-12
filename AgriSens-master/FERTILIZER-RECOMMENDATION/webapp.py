@@ -16,6 +16,7 @@ warnings.filterwarnings('ignore')
 from PIL import Image
 import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+csv_path = os.path.join(BASE_DIR, "Fertilizer_recommendation.csv")
 
 if os.path.exists("fertilizer.png"):
     img = Image.open("fertilizer.png")
