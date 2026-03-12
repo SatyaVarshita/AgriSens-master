@@ -15,6 +15,7 @@ warnings.filterwarnings('ignore')
 # Display Image
 from PIL import Image
 import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 if os.path.exists("fertilizer.png"):
     img = Image.open("fertilizer.png")
