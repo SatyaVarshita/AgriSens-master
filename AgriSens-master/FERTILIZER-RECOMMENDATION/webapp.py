@@ -12,9 +12,15 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # Display Image
+# Display Image
 from PIL import Image
-img = Image.open("fertilizer.png")  # optional image
-st.image(img)
+import os
+
+if os.path.exists("fertilizer.png"):
+    img = Image.open("fertilizer.png")
+    st.image(img)
+else:
+    st.warning("fertilizer.png image not found")
 
 # -----------------------------
 # Load Dataset
