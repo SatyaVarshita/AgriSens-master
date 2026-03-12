@@ -1,26 +1,34 @@
-## Importing necessary libraries for the web app
+# -----------------------------
+# Import Libraries
+# -----------------------------
 import streamlit as st
 import numpy as np
 import pandas as pd
-from sklearn.ensemble import RandomForestClassifier
-import pickle
 import os
+import pickle
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import accuracy_score
-import warnings
-warnings.filterwarnings('ignore')
-
-# Display Image
-# Display Image
 from PIL import Image
-import os
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-st.write("Files in this folder:", os.listdir(BASE_DIR))
-csv_path = os.path.join(BASE_DIR, "Fertilizer_recommendation.csv")
+import warnings
 
-if os.path.exists("fertilizer.png"):
-    img = Image.open("fertilizer.png")
+warnings.filterwarnings("ignore")
+
+# -----------------------------
+# Get Project Directory
+# -----------------------------
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+csv_path = os.path.join(BASE_DIR, "Fertilizer_recommendation.csv")
+img_path = os.path.join(BASE_DIR, "fertilizer.png")
+model_path = os.path.join(BASE_DIR, "Fertilizer_RF.pkl")
+
+# -----------------------------
+# Display Image
+# -----------------------------
+if os.path.exists(img_path):
+    img = Image.open(img_path)
     st.image(img)
 else:
     st.warning("fertilizer.png image not found")
@@ -28,10 +36,13 @@ else:
 # -----------------------------
 # Load Dataset
 # -----------------------------
-df = pd.read_csv("Fertilizer_recommendation.csv")
+df = pd.read_csv(csv_path)
 
-# Encode categorical columns
+# -----------------------------
+# Encode Categorical Data
+# -----------------------------
 label_encoders = {}
+
 for col in df.select_dtypes(include=["object"]).columns:
     le = LabelEncoder()
     df[col] = le.fit_transform(df[col])
@@ -40,32 +51,34 @@ for col in df.select_dtypes(include=["object"]).columns:
 X = df.drop("Fertilizer Name", axis=1)
 y = df["Fertilizer Name"]
 
-# Split data
-Xtrain, Xtest, Ytrain, Ytest = train_test_split(X, y, test_size=0.3, random_state=42)
+# -----------------------------
+# Train Model (Only if not saved)
+# -----------------------------
+if not os.path.exists(model_path):
 
-# Train RandomForest
-RF = RandomForestClassifier(n_estimators=100, random_state=5)
-RF.fit(Xtrain, Ytrain)
+    Xtrain, Xtest, Ytrain, Ytest = train_test_split(
+        X, y, test_size=0.3, random_state=42
+    )
 
-# Accuracy
-predicted_values = RF.predict(Xtest)
-acc = accuracy_score(Ytest, predicted_values)
-print("Model Accuracy:", acc)
+    RF = RandomForestClassifier(n_estimators=100, random_state=5)
+    RF.fit(Xtrain, Ytrain)
+
+    acc = accuracy_score(Ytest, RF.predict(Xtest))
+    print("Model Accuracy:", acc)
+
+    with open(model_path, "wb") as file:
+        pickle.dump(RF, file)
 
 # -----------------------------
-# Save Model
+# Load Model
 # -----------------------------
-RF_pkl_filename = "Fertilizer_RF.pkl"
-with open(RF_pkl_filename, "wb") as file:
-    pickle.dump(RF, file)
-
-# Load model
-RF_Model_pkl = pickle.load(open("Fertilizer_RF.pkl", "rb"))
+RF_Model = pickle.load(open(model_path, "rb"))
 
 # -----------------------------
 # Prediction Function
 # -----------------------------
 def predict_fertilizer(temp, humidity, moisture, soil, crop, nitrogen, potassium, phosphorous):
+
     soil_encoded = label_encoders["Soil Type"].transform([soil])[0]
     crop_encoded = label_encoders["Crop Type"].transform([crop])[0]
 
@@ -75,15 +88,21 @@ def predict_fertilizer(temp, humidity, moisture, soil, crop, nitrogen, potassium
         nitrogen, potassium, phosphorous
     ]).reshape(1, -1)
 
-    prediction = RF_Model_pkl.predict(features)
+    prediction = RF_Model.predict(features)
+
     fertilizer = label_encoders["Fertilizer Name"].inverse_transform(prediction)
-    return fertilizer
+
+    return fertilizer[0]
 
 # -----------------------------
 # Streamlit UI
 # -----------------------------
 def main():
-    st.markdown("<h1 style='text-align: center;'>SMART FERTILIZER RECOMMENDATIONS</h1>", unsafe_allow_html=True)
+
+    st.markdown(
+        "<h1 style='text-align:center;'>🌱 Smart Fertilizer Recommendation System</h1>",
+        unsafe_allow_html=True
+    )
 
     st.sidebar.title("AgriSens")
     st.sidebar.header("Enter Soil & Crop Details")
@@ -99,14 +118,20 @@ def main():
     soil = st.sidebar.selectbox("Soil Type", label_encoders["Soil Type"].classes_)
     crop = st.sidebar.selectbox("Crop Type", label_encoders["Crop Type"].classes_)
 
-    if st.sidebar.button("Predict"):
-        prediction = predict_fertilizer(
-            temp, humidity, moisture,
-            soil, crop,
-            nitrogen, potassium, phosphorous
+    if st.sidebar.button("Predict Fertilizer"):
+
+        result = predict_fertilizer(
+            temp,
+            humidity,
+            moisture,
+            soil,
+            crop,
+            nitrogen,
+            potassium,
+            phosphorous
         )
 
-        st.success(f"Recommended Fertilizer: {prediction[0]}")
+        st.success(f"✅ Recommended Fertilizer: **{result}**")
 
 # -----------------------------
 # Run App
