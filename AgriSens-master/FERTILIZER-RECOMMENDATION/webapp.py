@@ -5,7 +5,6 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import os
-import pickle
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
@@ -22,7 +21,6 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 csv_path = os.path.join(BASE_DIR, "Fertilizer_recommendation.csv")
 img_path = os.path.join(BASE_DIR, "fertilizer.png")
-model_path = os.path.join(BASE_DIR, "Fertilizer_RF.pkl")
 
 # -----------------------------
 # Display Image
@@ -48,31 +46,24 @@ for col in df.select_dtypes(include=["object"]).columns:
     df[col] = le.fit_transform(df[col])
     label_encoders[col] = le
 
+# -----------------------------
+# Prepare Features
+# -----------------------------
 X = df.drop("Fertilizer Name", axis=1)
 y = df["Fertilizer Name"]
 
 # -----------------------------
-# Train Model (Only if not saved)
+# Train Model
 # -----------------------------
-if not os.path.exists(model_path):
+Xtrain, Xtest, Ytrain, Ytest = train_test_split(
+    X, y, test_size=0.3, random_state=42
+)
 
-    Xtrain, Xtest, Ytrain, Ytest = train_test_split(
-        X, y, test_size=0.3, random_state=42
-    )
+RF_Model = RandomForestClassifier(n_estimators=100, random_state=5)
+RF_Model.fit(Xtrain, Ytrain)
 
-    RF = RandomForestClassifier(n_estimators=100, random_state=5)
-    RF.fit(Xtrain, Ytrain)
-
-    acc = accuracy_score(Ytest, RF.predict(Xtest))
-    print("Model Accuracy:", acc)
-
-    with open(model_path, "wb") as file:
-        pickle.dump(RF, file)
-
-# -----------------------------
-# Load Model
-# -----------------------------
-RF_Model = pickle.load(open(model_path, "rb"))
+# Accuracy
+accuracy = accuracy_score(Ytest, RF_Model.predict(Xtest))
 
 # -----------------------------
 # Prediction Function
@@ -103,6 +94,8 @@ def main():
         "<h1 style='text-align:center;'>🌱 Smart Fertilizer Recommendation System</h1>",
         unsafe_allow_html=True
     )
+
+    st.write(f"Model Accuracy: **{round(accuracy*100,2)}%**")
 
     st.sidebar.title("AgriSens")
     st.sidebar.header("Enter Soil & Crop Details")
