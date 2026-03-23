@@ -220,8 +220,100 @@ document.addEventListener("DOMContentLoaded", function () {
       pH: "5.78",
       rainfall: "105.92",
     },
-  ];
+    {
+    name: "Tomato",
+    nitrogen: "60",
+    phosphorus:"40",
+    potassium: "40",
+    temperature:"25",
+    humidity: "65",
+    pH : "6.5",
+    rainfall: "80",
+    },
+    {
+    name: "Potato",
+    nitrogen: "50",
+    phosphorus: "40",
+    potassium: "50",
+    temperature:"20",
+    humidity: "70",
+    pH : "5.5",
+    rainfall: "60",
+  },
+  {
+    name: "Onion",
+    nitrogen: "40",
+    phosphorus:"30",
+    potassium: "30",
+    temperature:"22",
+    humidity: "60",
+    pH : "6.5",
+    rainfall: "50",
+  },
+  {
+    name: "Carrot",
+    nitrogen: "30",
+    phosphorus:"20",
+    potassium: "30",
+    temperature: "18",
+    humidity: "60",
+    pH : "6.3",
+    rainfall: "40",
+  },
+  {
+    name: "Cabbage",
+    nitrogen: "70",
+    phosphorus: "50",
+    potassium: "50",
+    temperature: "20",
+    humidity: "75",
+    pH : "6.4",
+    rainfall: "90",
+  },
+  {
+  name: "Spinach",
+  nitrogen: "41.25",
+  phosphorus: "22.15",
+  potassium: "32.48",
+  temperature: "22.10",
+  humidity: "65.45",
+  pH: "6.45",
+  rainfall: "68.20",
+},
 
+{
+  name: "Fenugreek Leaves",
+  nitrogen: "36.50",
+  phosphorus: "21.35",
+  potassium: "27.60",
+  temperature: "21.85",
+  humidity: "58.20",
+  pH: "6.30",
+  rainfall: "54.75",
+},
+
+{
+  name: "Coriander Leaves",
+  nitrogen: "32.40",
+  phosphorus: "20.10",
+  potassium: "25.85",
+  temperature: "23.15",
+  humidity: "60.75",
+  pH: "6.55",
+  rainfall: "59.60",
+},
+
+{
+  name: "Amaranth Leaves",
+  nitrogen: "45.20",
+  phosphorus: "26.35",
+  potassium: "33.70",
+  temperature: "26.10",
+  humidity: "68.50",
+  pH: "6.70",
+  rainfall: "72.40",
+}
+];
   const tableBody = document
     .getElementById("crop-table")
     .getElementsByTagName("tbody")[0];
@@ -2185,7 +2277,347 @@ Transplanting: Start seedlings indoors and transplant them when they are about 1
 
     `;
   }
+  if (crop === "tomato") {
+content = `
+<h2>Tomato Cultivation</h2>
 
+<h3>1. Introduction</h3>
+<p>Tomato (Solanum lycopersicum) is one of the most widely cultivated vegetable crops in the world. It is used in salads, sauces, and many cooked dishes. Tomatoes grow well in warm climates with moderate rainfall.</p>
+
+<h3>2. Materials and Resources Required</h3>
+<ul>
+<li><strong>Seeds:</strong> Certified high-yield tomato seeds.</li>
+<li><strong>Fertilizers:</strong> Nitrogen, phosphorus, potassium fertilizers and organic compost.</li>
+<li><strong>Irrigation Equipment:</strong> Drip irrigation or sprinkler system.</li>
+<li><strong>Pest Control:</strong> Insecticides for aphids, whiteflies, and leaf miners.</li>
+<li><strong>Tools:</strong> Hoes, shovels, and pruning tools.</li>
+</ul>
+
+<h3>3. Preparation Steps</h3>
+<h4>Soil Preparation:</h4>
+<p>Tomatoes grow best in well-drained loamy soil with pH between 6.0 and 7.0.</p>
+
+<h4>Seed Selection:</h4>
+<p>Select disease-resistant hybrid varieties.</p>
+
+<h4>Field Preparation:</h4>
+<p>Plough the field and mix organic manure before planting.</p>
+
+<h3>4. Planting Procedure</h3>
+<h4>Planting Time:</h4>
+<p>Tomatoes are planted during warm seasons.</p>
+
+<h4>Spacing:</h4>
+<p>Maintain spacing of about 60 cm x 45 cm.</p>
+
+<h4>Transplanting:</h4>
+<p>Seedlings are raised in nursery beds and transplanted after 25-30 days.</p>
+
+<h3>5. Growth Stages and Care</h3>
+<h4>Watering:</h4>
+<p>Provide regular irrigation but avoid waterlogging.</p>
+
+<h4>Nutrient Management:</h4>
+<p>Nitrogen: 60, Phosphorus: 40, Potassium: 40.</p>
+
+<h4>Pest and Disease Control:</h4>
+<p>Monitor for pests like aphids and whiteflies. Use IPM methods.</p>
+
+<h3>6. Harvesting Process</h3>
+<p>Harvest when fruits turn red and firm.</p>
+
+<h3>7. Storage</h3>
+<p>Store tomatoes in cool dry conditions.</p>
+
+<h3>8. Challenges and Solutions</h3>
+<p>Major issues include pests and fungal diseases. Proper crop rotation and pest control help reduce problems.</p>
+`;
+}
+if (crop === "potato") {
+content = `
+<h2>Potato Cultivation</h2>
+
+<h3>1. Introduction</h3>
+<p>Potato (Solanum tuberosum) is an important tuber crop grown worldwide for food.</p>
+
+<h3>2. Materials and Resources Required</h3>
+<ul>
+<li>Seed tubers</li>
+<li>NPK fertilizers</li>
+<li>Irrigation system</li>
+<li>Basic farming tools</li>
+</ul>
+
+<h3>3. Preparation Steps</h3>
+<p>Potatoes grow best in sandy loam soil with pH 5.0-6.5.</p>
+
+<h3>4. Planting Procedure</h3>
+<p>Plant seed tubers 5-10 cm deep with spacing 60 X 30 cm.</p>
+
+<h3>5. Growth Stages and Care</h3>
+<p>Nitrogen: 50, Phosphorus: 40, Potassium: 50.</p>
+<p>Temperature: 15-25°C, Humidity: 65-75%, Rainfall: 50-70 mm.</p>
+
+<h3>6. Harvesting Process</h3>
+<p>Harvest when plants turn yellow and dry.</p>
+
+<h3>7. Storage</h3>
+<p>Store potatoes in cool dark storage to prevent sprouting.</p>
+
+<h3>8. Challenges and Solutions</h3>
+<p>Common problems include late blight disease and pests.</p>
+`;
+}
+if (crop === "onion") {
+content = `
+<h2>Onion Cultivation</h2>
+
+<h3>1. Introduction</h3>
+<p>Onion (Allium cepa) is widely used in cooking and food flavoring.</p>
+
+<h3>2. Materials Required</h3>
+<ul>
+<li>Onion seeds</li>
+<li>Fertilizers</li>
+<li>Irrigation system</li>
+</ul>
+
+<h3>3. Soil Preparation</h3>
+<p>Loose well-drained soil with pH 6.0-7.0.</p>
+
+<h3>4. Planting</h3>
+<p>Seeds are first raised in nurseries and transplanted.</p>
+
+<h3>5. Nutrient Requirements</h3>
+<p>Nitrogen: 40, Phosphorus: 30, Potassium: 30.</p>
+
+<h3>6. Climate</h3>
+<p>Temperature: 18-27°C, Humidity: 55-65%, Rainfall: 40-60 mm.</p>
+
+<h3>7. Harvesting</h3>
+<p>Harvest when tops bend and bulbs mature.</p>
+
+<h3>8. Storage</h3>
+<p>Dry onions properly before storage.</p>
+`;
+}
+if (crop === "carrot") {
+content = `
+<h2>Carrot Cultivation</h2>
+
+<h3>1. Introduction</h3>
+<p>Carrot (Daucus carota) is a root vegetable rich in vitamins.</p>
+
+<h3>2. Materials Required</h3>
+<ul>
+<li>Carrot seeds</li>
+<li>NPK fertilizers</li>
+<li>Irrigation facility</li>
+</ul>
+
+<h3>3. Soil Preparation</h3>
+<p>Loose sandy soil is ideal for carrot cultivation.</p>
+
+<h3>4. Planting</h3>
+<p>Seeds are directly sown in rows.</p>
+
+<h3>5. Nutrient Requirements</h3>
+<p>Nitrogen: 30, Phosphorus: 20, Potassium: 30.</p>
+
+<h3>6. Climate</h3>
+<p>Temperature: 16-21°C, Humidity: 55-65%, Rainfall: 35-50 mm.</p>
+
+<h3>7. Harvesting</h3>
+<p>Harvest carrots when roots reach suitable size.</p>
+`;
+}
+else if (crop === "cabbage") {
+content = `
+<h2>Cabbage Cultivation</h2>
+
+<h3>1. Introduction</h3>
+<p>Cabbage (Brassica oleracea) is a leafy vegetable grown in cool climates.</p>
+
+<h3>2. Materials Required</h3>
+<ul>
+<li>Cabbage seeds</li>
+<li>NPK fertilizers</li>
+<li>Irrigation system</li>
+</ul>
+
+<h3>3. Soil Preparation</h3>
+<p>Fertile well-drained soil with pH 6.0–6.5.</p>
+
+<h3>4. Planting</h3>
+<p>Seedlings are transplanted after nursery growth.</p>
+
+<h3>5. Nutrient Requirements</h3>
+<p>Nitrogen: 70, Phosphorus: 50, Potassium: 50.</p>
+
+<h3>6. Climate</h3>
+<p>Temperature: 15–20°C, Humidity: 70–80%, Rainfall: 80–100 mm.</p>
+
+<h3>7. Harvesting</h3>
+<p>Harvest when cabbage heads become firm.</p>
+`;
+}
+ if (crop === "spinach") {
+content = `
+<h2>Spinach Cultivation</h2>
+
+<h3>1. Introduction</h3>
+<p>Spinach (Spinacia oleracea) is a fast-growing leafy vegetable rich in vitamins and minerals. It is widely cultivated for its nutritious leaves and can grow in both cool and moderate climates.</p>
+
+<h3>2. Materials and Resources Required</h3>
+<ul>
+<li><strong>Seeds:</strong> High-quality spinach seeds.</li>
+<li><strong>Fertilizers:</strong> Nitrogen-rich fertilizers and organic compost.</li>
+<li><strong>Irrigation Equipment:</strong> Sprinkler or drip irrigation.</li>
+<li><strong>Pest Control:</strong> Organic pesticides to control leaf miners and aphids.</li>
+<li><strong>Tools:</strong> Basic farming tools such as hoes and watering cans.</li>
+</ul>
+
+<h3>3. Preparation Steps</h3>
+<h4>Soil Preparation:</h4>
+<p>Spinach grows well in fertile, well-drained soil with pH between 6.0 and 7.0.</p>
+
+<h4>Seed Selection:</h4>
+<p>Select fast-growing and disease-resistant varieties.</p>
+
+<h4>Field Preparation:</h4>
+<p>Plough and level the soil and add organic manure before sowing.</p>
+
+<h3>4. Planting Procedure</h3>
+<h4>Planting Time:</h4>
+<p>Spinach can be grown throughout the year in moderate climates.</p>
+
+<h4>Spacing:</h4>
+<p>Maintain spacing of about 20 cm between rows.</p>
+
+<h4>Seeding Method:</h4>
+<p>Seeds are directly sown in rows in prepared soil.</p>
+
+<h3>5. Growth Stages and Care</h3>
+<h4>Watering Requirements:</h4>
+<p>Provide regular watering to keep the soil moist.</p>
+
+<h4>Nutrient Management:</h4>
+<p>Nitrogen: 40, Phosphorus: 20, Potassium: 30.</p>
+
+<h4>Pest and Disease Management:</h4>
+<p>Common pests include aphids and leaf miners. Use organic pesticides if necessary.</p>
+
+<h3>6. Harvesting Process</h3>
+<p>Leaves can be harvested 30–40 days after sowing.</p>
+
+<h3>7. Post-Harvest Storage</h3>
+<p>Store spinach leaves in cool conditions to maintain freshness.</p>
+
+<h3>8. Challenges and Solutions</h3>
+<p>Common challenges include pest infestation and leaf diseases. Proper crop rotation and pest monitoring help manage these issues.</p>
+`;
+}
+ if (crop === "fenugreek") {
+content = `
+<h2>Fenugreek Leaves Cultivation</h2>
+
+<h3>1. Introduction</h3>
+<p>Fenugreek (Trigonella foenum-graecum), commonly known as methi, is a leafy vegetable widely used in cooking and traditional medicine.</p>
+
+<h3>2. Materials Required</h3>
+<ul>
+<li>Fenugreek seeds</li>
+<li>Organic fertilizers</li>
+<li>Irrigation system</li>
+<li>Basic farming tools</li>
+</ul>
+
+<h3>3. Soil Preparation</h3>
+<p>Fenugreek grows best in well-drained loamy soil with pH 6.0–7.0.</p>
+
+<h3>4. Planting Procedure</h3>
+<p>Seeds are directly sown in rows with spacing of 20–25 cm.</p>
+
+<h3>5. Growth Stages and Care</h3>
+<p>Nitrogen: 35, Phosphorus: 20, Potassium: 25.</p>
+<p>Temperature: 15–25°C, Humidity: 50–60%, Rainfall: 40–60 mm.</p>
+
+<h3>6. Harvesting</h3>
+<p>Leaves are harvested 20–30 days after sowing.</p>
+
+<h3>7. Storage</h3>
+<p>Fenugreek leaves should be stored in cool and dry conditions.</p>
+
+<h3>8. Challenges and Solutions</h3>
+<p>Common problems include fungal diseases. Proper spacing and ventilation help prevent them.</p>
+`;
+}
+ if (crop === "coriander") {
+content = `
+<h2>Coriander Leaves Cultivation</h2>
+
+<h3>1. Introduction</h3>
+<p>Coriander (Coriandrum sativum) is a leafy herb widely used in cooking for flavor and aroma.</p>
+
+<h3>2. Materials Required</h3>
+<ul>
+<li>Coriander seeds</li>
+<li>Organic fertilizers</li>
+<li>Irrigation system</li>
+</ul>
+
+<h3>3. Soil Preparation</h3>
+<p>Coriander grows best in well-drained sandy loam soil with pH 6.2–6.8.</p>
+
+<h3>4. Planting</h3>
+<p>Seeds are directly sown in rows with proper spacing.</p>
+
+<h3>5. Nutrient Requirements</h3>
+<p>Nitrogen: 30, Phosphorus: 20, Potassium: 25.</p>
+
+<h3>6. Climate Conditions</h3>
+<p>Temperature: 17–27°C, Humidity: 60–70%, Rainfall: 40–70 mm.</p>
+
+<h3>7. Harvesting</h3>
+<p>Leaves can be harvested 30–40 days after sowing.</p>
+
+<h3>8. Storage</h3>
+<p>Fresh coriander leaves should be stored in cool conditions to maintain freshness.</p>
+`;
+}
+if (crop === "amaranth") {
+content = `
+<h2>Amaranth Leaves Cultivation</h2>
+
+<h3>1. Introduction</h3>
+<p>Amaranth (Amaranthus spp.) is a nutritious leafy vegetable widely grown in tropical regions.</p>
+
+<h3>2. Materials Required</h3>
+<ul>
+<li>Amaranth seeds</li>
+<li>Organic manure</li>
+<li>Irrigation system</li>
+</ul>
+
+<h3>3. Soil Preparation</h3>
+<p>Amaranth grows well in fertile, well-drained soil with pH 6.0–7.5.</p>
+
+<h3>4. Planting Procedure</h3>
+<p>Seeds are directly sown in rows with spacing of about 25 cm.</p>
+
+<h3>5. Nutrient Requirements</h3>
+<p>Nitrogen: 40, Phosphorus: 25, Potassium: 30.</p>
+
+<h3>6. Climate Conditions</h3>
+<p>Temperature: 20–30°C, Humidity: 60–70%, Rainfall: 50–80 mm.</p>
+
+<h3>7. Harvesting</h3>
+<p>Leaves can be harvested 25–30 days after sowing.</p>
+
+<h3>8. Storage</h3>
+<p>Amaranth leaves should be consumed fresh or stored in cool conditions.</p>
+`;
+}
   cropInfo.innerHTML = content;
   cropInfo.style.display = content ? "block" : "none";
 }
